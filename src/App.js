@@ -1,36 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-// import Button from 'material-ui/Button';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { addTodo, deleteTodo } from './actions/todos-actions';
 import './App.css';
 
 class App extends Component {
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(event.target.todo.value);
-    this.props.onAddTodo(event.target.todo.value);
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  deleteTodos(id) {
-    const index = this.props.todos.findIndex(x => x.id === id);
-    this.props.onDeleteTodo(index);
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.onAddTodo(event.target.todo.value);
+    event.target.reset();
   }
 
   render() {
+    const todos = this.props.todos.map((todo, index) => <p key={index}>{todo}</p>);
+
     return (
       <div className="App">
-        <h1>Todo App!!</h1>
+        <h1>The Coolest Todo App</h1>
         <MuiThemeProvider>
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form onSubmit={this.handleSubmit}>
             <TextField
               name="todo"
               floatingLabelText="Add Todo"
+              autoComplete="off"
             />
           </form>
         </MuiThemeProvider>
+        { todos }
       </div>
     );
   }
@@ -44,7 +48,7 @@ const todosSelector = createSelector(
 
 const mapStateToProps = createSelector(
   todosSelector,
-  (todos) => ({
+  todos => ({
     todos
   })
 );
@@ -56,4 +60,9 @@ const mapActionsToProps = {
 
 
 export default connect(mapStateToProps, mapActionsToProps)(App);
+
+App.propTypes = {
+  todos: PropTypes.array,
+  onAddTodo: PropTypes.func
+};
 
