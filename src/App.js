@@ -4,20 +4,15 @@ import { createSelector } from 'reselect';
 // import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { addTodos, getTodos, deleteTodo } from './actions/todos-actions';
+import { addTodo, deleteTodo } from './actions/todos-actions';
 import './App.css';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.onRequestTodos();
-  }
-
-  onUpdateTodo(event) {
+  handleSubmit(event) {
     event.preventDefault();
-    console.log(event.target);
-    this.props.onAddTodo({ title: event.target.value });
+    console.log(event.target.todo.value);
+    this.props.onAddTodo(event.target.todo.value);
   }
-
 
   deleteTodos(id) {
     const index = this.props.todos.findIndex(x => x.id === id);
@@ -25,22 +20,17 @@ class App extends Component {
   }
 
   render() {
-    const todo = this.props.todos.map(todo => {
-      return <p onClick={this.deleteTodos.bind(this, todo.id)} key={todo.title}> {todo.title}</p>
-    });
-
     return (
       <div className="App">
-        <h1>Todo App!! </h1>
-
-        <form onSubmit={this.onUpdateTodo.bind(this)} >
-          <MuiThemeProvider>
-          <TextField
-            placeholder="Add Todo"
-          />
-          </MuiThemeProvider>
-        </form>
-        { todo }
+        <h1>Todo App!!</h1>
+        <MuiThemeProvider>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <TextField
+              name="todo"
+              floatingLabelText="Add Todo"
+            />
+          </form>
+        </MuiThemeProvider>
       </div>
     );
   }
@@ -49,20 +39,19 @@ class App extends Component {
 
 const todosSelector = createSelector(
   state => state.todos,
-  todos => todos,
+  todos => todos
 );
 
 const mapStateToProps = createSelector(
   todosSelector,
   (todos) => ({
-    todos,
+    todos
   })
 );
 
 const mapActionsToProps = {
-  onRequestTodos: getTodos,
-  onAddTodo: addTodos,
-  onDeleteTodo: deleteTodo,
+  onAddTodo: addTodo,
+  onDeleteTodo: deleteTodo
 };
 
 
