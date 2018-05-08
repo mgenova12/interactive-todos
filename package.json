@@ -12,6 +12,7 @@
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
+    "react-transition-group": "^1.2.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1"
@@ -28,6 +29,8 @@
     "eslint-config-google": "^0.9.1",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1"
   }
 }

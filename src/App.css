@@ -1,14 +1,27 @@
-.App {
-
-}
-
-.form p {
-  font-size: 20px;  
+.form li {
   cursor: pointer;
+  background-color: red;
 }
 
-.form p:hover {
-  opacity: .5;
+.form {
+	display: block;
+	margin: 0 auto;
 }
 
-  
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
