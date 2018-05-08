@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import TodoItem from './TodoItem';
 import { CSSTransitionGroup } from 'react-transition-group';
+import TodoItem from './TodoItem';
 
 export class TodoList extends Component {
   render() {
     let todoItems;
 
     if (this.props.todos) {
-      todoItems = this.props.todos.map((todo, index) => {
-        return (
-          <TodoItem key={index} todo={todo}/>
-        )
-      });
+      todoItems = this.props.todos.map((todo, index) =>
+        (
+          <TodoItem key={index} todo={todo} todoIndex={index} />
+        ));
     }
 
     return (

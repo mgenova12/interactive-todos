@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import PropTypes from 'prop-types';
 import { addTodo, deleteTodo } from './actions/todos-actions';
 import Header from './components/Header';
 import TodoList from './components/TodoList';
@@ -40,3 +41,9 @@ const mapActionsToProps = {
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(App);
+
+App.propTypes = {
+  todos: PropTypes.array,
+  onAddTodo: PropTypes.func
+};
+
