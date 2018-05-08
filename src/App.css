@@ -1,6 +1,11 @@
 .form li {
   cursor: pointer;
-  background-color: red;
+  /*background-color: red;*/
+}
+
+ol {
+	max-width:300px;
+	margin:0 auto;
 }
 
 .form {

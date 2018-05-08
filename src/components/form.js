@@ -58,7 +58,7 @@ export class Form extends Component {
             autoComplete="off"
           />
         </form>
-        <ol className="formcontainer">
+        <ol className="list">
           <CSSTransitionGroup
             transitionName="example"
             transitionEnterTimeout={500}
