@@ -9,7 +9,14 @@ export class TodoList extends Component {
     if (this.props.todos) {
       todoItems = this.props.todos.map((todo, index) =>
         (
-          <TodoItem key={index} todo={todo} todoIndex={index} deleteTodo={this.props.deleteTodo} />
+          <TodoItem
+            key={index}
+            todo={todo}
+            todoIndex={index}
+            deleteTodo={this.props.deleteTodo}
+            toggleHover={this.props.toggleHover}
+            toggleState={this.props.toggleState}
+          />
         ));
     }
 

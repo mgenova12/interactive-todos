@@ -9,9 +9,11 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { todosReducer } from './reducers/todos-reducer';
+import { hoverReducer } from './reducers/hover-reducer';
 
 const allReducers = combineReducers({
-  todos: todosReducer
+  todos: todosReducer,
+  isHovering: hoverReducer
 });
 
 const allStoreEnhancers = compose(
@@ -21,7 +23,8 @@ const allStoreEnhancers = compose(
 
 const store = createStore(
   allReducers, {
-    todos: []
+    todos: [],
+    isHovering: false
   },
   allStoreEnhancers
 );

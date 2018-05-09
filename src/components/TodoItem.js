@@ -7,17 +7,14 @@ export class TodoItem extends Component {
     super(props);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.state = {
-      isHovering: false
-    };
   }
 
   handleMouseEnter() {
-    this.setState({ isHovering: true });
+    this.props.toggleHover(true);
   }
 
   handleMouseLeave() {
-    this.setState({ isHovering: false });
+    this.props.toggleHover(false);
   }
 
   render() {
@@ -29,8 +26,11 @@ export class TodoItem extends Component {
       >
         <strong>{ this.props.todo }</strong>
         {
-          this.state.isHovering &&
-            <DeleteTodo todoIndex={this.props.todoIndex} deleteTodo={this.props.deleteTodo} />
+          this.props.toggleState &&
+            <DeleteTodo
+              todoIndex={this.props.todoIndex}
+              deleteTodo={this.props.deleteTodo}
+            />
         }
       </li>
     );
@@ -40,6 +40,6 @@ export class TodoItem extends Component {
 export default TodoItem;
 
 TodoItem.propTypes = {
-  todo: PropTypes.isRequired,
-  todoIndex: PropTypes.isRequired
+  todo: PropTypes.string,
+  todoIndex: PropTypes.number
 };
