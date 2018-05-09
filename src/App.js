@@ -16,7 +16,7 @@ class App extends Component {
         <MuiThemeProvider>
           <Header />
           <InputTodo addTodo={this.props.onAddTodo} />
-          <TodoList todos={this.props.todos} />
+          <TodoList todos={this.props.todos} deleteTodo={this.props.onDeleteTodo} />
         </MuiThemeProvider>
       </div>
     );
@@ -44,6 +44,7 @@ export default connect(mapStateToProps, mapActionsToProps)(App);
 
 App.propTypes = {
   todos: PropTypes.array,
-  onAddTodo: PropTypes.func
+  onAddTodo: PropTypes.func,
+  onDeleteTodo: PropTypes.func
 };
 

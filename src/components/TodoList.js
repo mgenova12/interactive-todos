@@ -9,7 +9,7 @@ export class TodoList extends Component {
     if (this.props.todos) {
       todoItems = this.props.todos.map((todo, index) =>
         (
-          <TodoItem key={index} todo={todo} todoIndex={index} />
+          <TodoItem key={index} todo={todo} todoIndex={index} deleteTodo={this.props.deleteTodo} />
         ));
     }
 
@@ -17,7 +17,7 @@ export class TodoList extends Component {
       <div className="todo-list">
         <ol>
           <CSSTransitionGroup
-            transitionName="example"
+            transitionName="todo-list-item"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
           >

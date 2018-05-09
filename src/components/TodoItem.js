@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import DeleteTodo from './DeleteTodo';
 
 export class TodoItem extends Component {
   constructor(props) {
     super(props);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this, this.props.todoIndex);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.state = {
       isHovering: false
     };
   }
 
-  handleMouseEnter(index) {
-    console.log(index);
-    const { isHovering } = this.state.isHovering;
-    this.setState({ isHovering: !isHovering });
+  handleMouseEnter() {
+    this.setState({ isHovering: true });
   }
 
   handleMouseLeave() {
-    console.log('hi');
+    this.setState({ isHovering: false });
   }
 
   render() {
@@ -29,6 +28,10 @@ export class TodoItem extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <strong>{ this.props.todo }</strong>
+        {
+          this.state.isHovering &&
+            <DeleteTodo todoIndex={this.props.todoIndex} deleteTodo={this.props.deleteTodo} />
+        }
       </li>
     );
   }
@@ -37,5 +40,6 @@ export class TodoItem extends Component {
 export default TodoItem;
 
 TodoItem.propTypes = {
-  todo: PropTypes.isRequired
+  todo: PropTypes.isRequired,
+  todoIndex: PropTypes.isRequired
 };

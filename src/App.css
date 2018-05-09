@@ -1,6 +1,10 @@
-.form li {
+li {
   cursor: pointer;
   /*background-color: red;*/
+}
+
+strong {
+  cursor: pointer;
 }
 
 ol {
@@ -8,25 +12,35 @@ ol {
 	margin:0 auto;
 }
 
-.form {
-	display: block;
-	margin: 0 auto;
+.delete-todo {
+  display: inline-block;
+  float: right;
 }
 
-.example-enter {
+.todo-item {
+
+}
+
+.input-todo {
+  margin-bottom: 10px;
+}
+
+
+
+.todo-list-item-enter {
   opacity: 0.01;
 }
 
-.example-enter.example-enter-active {
+.todo-list-item-enter.todo-list-item-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
 
-.example-leave {
+.todo-list-item-leave {
   opacity: 1;
 }
 
-.example-leave.example-leave-active {
+.todo-list-item-leave.todo-list-item-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
