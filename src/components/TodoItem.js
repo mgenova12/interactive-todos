@@ -32,7 +32,7 @@ export class TodoItem extends Component {
         {
           this.state.isHovering &&
           <div className="hover-buttons">
-            <EditTodo 
+            <EditTodo
               editTodo={this.props.editTodo}
               todoIndex={this.props.todoIndex}
             />
@@ -50,7 +50,6 @@ export class TodoItem extends Component {
 export default TodoItem;
 
 TodoItem.propTypes = {
-  todo: PropTypes.string,
   todoIndex: PropTypes.number,
   deleteTodo: PropTypes.func
 };

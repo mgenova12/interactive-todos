@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentEdit from 'material-ui/svg-icons/image/edit';
+import InputEdit from './InputEdit';
 
 export class EditTodo extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      inputs: []
-    };
     this.addInputs = this.addInputs.bind(this, this.props.todoIndex);
   }
 
   addInputs(index) {
-    const inputs = this.state.inputs.concat(<input type="text" />);
-    this.setState({ inputs });
-    console.log(this.state.inputs);
-    this.props.editTodo(index, 3);
+    this.props.editTodo(index, <InputEdit />);
   }
 
 

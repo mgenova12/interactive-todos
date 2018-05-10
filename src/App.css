@@ -16,6 +16,9 @@ ol {
   display: inline-block;
   margin-left: 5px;
 }
+.input-edit {
+  display: inline-block;
+}
 
 .edit-todo {
   display: inline-block;
