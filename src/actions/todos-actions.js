@@ -1,5 +1,6 @@
 export const ADD_TODO = 'todos:addTodo';
-export const DELETE_TODO = 'todos:index';
+export const DELETE_TODO = 'todos:deleteTodo';
+export const EDIT_TODO = 'todos:editTodo';
 
 export function addTodo(newTodo) {
   return {
@@ -19,3 +20,12 @@ export function deleteTodo(index) {
   };
 }
 
+export function editTodo(index, input) {
+  return {
+    type: EDIT_TODO,
+    payload: {
+      indexs: index,
+      inputs: input
+    }
+  };
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
+import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
 export class TodoList extends Component {
@@ -14,8 +15,7 @@ export class TodoList extends Component {
             todo={todo}
             todoIndex={index}
             deleteTodo={this.props.deleteTodo}
-            toggleHover={this.props.toggleHover}
-            toggleState={this.props.toggleState}
+            editTodo={this.props.editTodo}
           />
         ));
     }
@@ -37,3 +37,8 @@ export class TodoList extends Component {
 }
 
 export default TodoList;
+
+TodoList.propTypes = {
+  todos: PropTypes.array,
+  deleteTodo: PropTypes.func
+};

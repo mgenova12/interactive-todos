@@ -14,11 +14,15 @@ ol {
 
 .delete-todo {
   display: inline-block;
-  float: right;
+  margin-left: 5px;
 }
 
-.todo-item {
+.edit-todo {
+  display: inline-block;
+}
 
+.hover-buttons {
+  float: right;
 }
 
 .input-todo {

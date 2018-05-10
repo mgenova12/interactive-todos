@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PropTypes from 'prop-types';
-import { addTodo, deleteTodo } from './actions/todos-actions';
-import { toggleHover } from './actions/hover-actions';
+import { addTodo, deleteTodo, editTodo } from './actions/todos-actions';
 import Header from './components/Header';
 import TodoList from './components/TodoList';
 import InputTodo from './components/InputTodo';
@@ -21,8 +20,7 @@ class App extends Component {
             <TodoList
               todos={this.props.todos}
               deleteTodo={this.props.onDeleteTodo}
-              toggleHover={this.props.onToggleHover}
-              toggleState={this.props.isHovering}
+              editTodo={this.props.onEditTodo}
             />
           </div>
         </MuiThemeProvider>
@@ -36,24 +34,17 @@ const todosSelector = createSelector(
   todos => todos
 );
 
-const hoverSelector = createSelector(
-  state => state.isHovering,
-  isHovering => isHovering
-);
-
 const mapStateToProps = createSelector(
   todosSelector,
-  hoverSelector,
-  (todos, isHovering) => ({
-    todos,
-    isHovering
+  todos => ({
+    todos
   })
 );
 
 const mapActionsToProps = {
   onAddTodo: addTodo,
   onDeleteTodo: deleteTodo,
-  onToggleHover: toggleHover
+  onEditTodo: editTodo
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(App);
