@@ -10,7 +10,7 @@ export class EditTodo extends Component {
   }
 
   addInputs(index) {
-    this.props.editTodo(index, <InputEdit />);
+    this.props.editTodo(index, <InputEdit editTodo={this.props.editTodo} todoIndex={this.props.todoIndex} />);
   }
 
 

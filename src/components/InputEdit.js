@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 
 export class InputEdit extends Component {
-  handleSubmit(event) {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this, this.props.todoIndex);
+  }
+
+  handleSubmit(index, event) {
     event.preventDefault();
-    console.log('Submitted!');
+    this.props.editTodo(index, event.target.todoEdit.value);
   }
 
 
@@ -14,7 +19,7 @@ export class InputEdit extends Component {
         <TextField
           name="todoEdit"
           autoComplete="off"
-          style={{ width: 160 }}
+          style={{ width: 160, height: 40 }}
         />
       </form>
     );
